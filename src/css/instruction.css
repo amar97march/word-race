@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+
+
+.instruction-outer {
+    background-color: #4575b6;
+    height: 100%;
+    text-align: center;
+    padding: 7px;
+}
+
+.instruction-outer .instruction-inner {
+    background-color: #3f4964;
+    width: 65%;
+    height: 90%;
+    text-align: center;
+    padding: 2px;
+    margin: 10px auto;
+    border-radius: 47px;
+    box-shadow: 0 0 18px rgb(0 0 0 / 64%);
+}
+
+
+.instruction-outer .instruction-inner .instructions{
+overflow-y: scroll;
+    height: 80%;
+    box-shadow: 
+    inset 0px 11px 8px -10px #525252,
+    inset 0px -11px 8px -10px #525252;
+    background: #36405d;
+}
+
+.instruction-outer .instruction-inner .instructions .scroll-section{
+color: #dedede;
+}
+
+.instruction-outer .heading{
+font-size: 40px;
+color: white;
+font-family: 'Rampart One', cursive;
+}
+
+.instruction-outer .instruction-inner .startButton{
+    border:none;
+   background-color:transparent;
+   outline:none;
+   cursor: pointer;
+}
+
+.instruction-outer .instruction-inner .startButton img{
+    margin: 10px;
+    width: 100px;
+}
