@@ -149,7 +149,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
-    'https://localhost:3000', 'https://word-race-game.herokuapp.com',
+    'https://localhost:3000', 'https://word-race-game.herokuapp.com/','http://localhost:3000',
 ]
 
 
