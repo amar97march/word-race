@@ -1,9 +1,13 @@
 import './App.css';
+import axios from 'axios';
 import game_logo from './Assets/logo.png'
 import { BrowserRouter as Router,Switch, Route } from 'react-router-dom';
 import InstructionPage from './Components/InstructionSection/InstructionPage';
 import GameSection from './Components/GamePage/GameSection';
 
+
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 function App() {
   return (
