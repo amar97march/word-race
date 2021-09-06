@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
-import "../../css/game-section.css";
+
 import ProgressBar from "./Progressbar";
 import KeyboardEventHandler from "react-keyboard-event-handler";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import GameOver from "./GameOverPopUp";
 import Countdown from "./Countdown";
+import "../../css/game-section.css";
+import success_sound from '../../Assets/success.wav'
+import wrong from '../../Assets/wrong.mp3'
+import { getWordsdata } from "../../services/API";
 
-const GameSection = () => {
+const GameSection = (props) => {
+  const name = props.location.state.name
   const [score, setScore] = useState(0);
   const [level, setLevel] = useState(1);
   const [multiplier, setMultiplier] = useState(1);
@@ -13,15 +20,39 @@ const GameSection = () => {
   const [wordList, setWordList] = useState([]);
   const [wordListQueue, setWordListQueue] = useState([]);
   const [matched_index, setMatched_index] = useState(0);
+  const [wordTimer, setWordTimer] = React.useState(5);
   const [seconds, setSeconds] = React.useState(5);
-  // Timer declaration
+  const [modalShow, setModalShow] = useState(false);
+  let success_audio = new Audio(success_sound);
+  let wrong_audio = new Audio(wrong);
+  
 
+  var timer;
   const wordSize = 20;
+
+
+  
 
   const addWord = () => {
     if (wordListQueue.length === 0 && wordList.length === 0) {
-      alert("Winner");
+      setModalShow(true)
+      setLevel(level + 1);
+      setMultiplier(multiplier + 1);
+      setWordTimer(wordTimer - 1);
       setSeconds(0);
+
+      fetchItems();
+  
+      setSeconds(wordTimer - 1);
+    } else if (wordListQueue.length === 0 && wordList.length > 0) {
+      if (percentage + 10 >= 100) {
+        setModalShow(true)
+
+        setSeconds(0);
+      } else {
+        setPercentage(percentage + 10);
+        setSeconds(wordTimer);
+      }
     } else {
       if (wordListQueue.length > 0) {
         setWordList((prevItems) => [
@@ -30,21 +61,34 @@ const GameSection = () => {
         ]);
         setWordListQueue(wordListQueue.slice(0, -1));
       }
-      clearInterval();
-      setSeconds(5);
+      setSeconds(0);
+      setSeconds(wordTimer);
 
       if (percentage + 10 >= 100) {
-        alert("You failed");
+        // <GameOver show={true}/>
+        setModalShow(true)
         setSeconds(0);
       } else {
+        console.log("here3w");
         setPercentage(wordList.length * 10);
       }
     }
+    console.log(wordListQueue, "--", wordList);
   };
+
+
+
+
+  const decreaseSeconds = (seconds) => {
+    setSeconds(seconds - 1)
+  }
 
   useEffect(() => {
     if (seconds > 0) {
-      setTimeout(() => setSeconds(seconds - 1), 1000);
+      timer = setTimeout(() => decreaseSeconds(seconds), 1000);
+      return () => {
+        clearTimeout(timer);
+      };
     } else {
       addWord();
 
@@ -53,28 +97,24 @@ const GameSection = () => {
       } else {
         setPercentage(wordList.length * 10);
       }
-      //   setSeconds(5);
     }
   }, [seconds]);
 
   const fetchItems = () => {
-    var wordList_data = [
-      "Cat",
-      "Dog",
-      "Camel",
-      "Cow",
-      "Zebra",
-      "Tiger",
-      "Lion",
-      "Platypus",
-      "Gorrila",
-      "Girrafe",
-    ];
-    if (wordList_data.length > 0) {
-      setCurrentWord(wordList_data[wordList_data.length - 1].split(""));
-      console.log(wordList_data[wordList_data.length - 1].split(""));
-      setWordListQueue(wordList_data.slice(0, -1));
-    }
+    console.log(name);
+    getWordsdata()
+      .then((res) => {
+        let wordList_data = res.data.data["words_list"];
+        console.log(res.data.data);
+        if (wordList_data.length > 0) {
+          setCurrentWord(wordList_data[wordList_data.length - 1].split(""));
+          console.log(wordList_data[wordList_data.length - 1].split(""));
+          setWordListQueue(wordList_data.slice(0, -1));
+        }
+        
+
+      })
+      .catch((err) => {});
   };
 
   const onKeyPress = (key, e) => {
@@ -86,7 +126,7 @@ const GameSection = () => {
         setMatched_index(0);
 
         if (wordList.length > 0) {
-          setSeconds(5);
+          
           if (wordListQueue.length === 0 && wordList.length === 1) {
             setCurrentWord([]);
           } else {
@@ -98,15 +138,19 @@ const GameSection = () => {
             setPercentage(0);
           }
           setWordList(wordList.slice(0, -1));
+          setSeconds(wordTimer);
+        } else {
+          setCurrentWord([]);
         }
-        else (
-            setCurrentWord([])
-        )
 
         setScore(score + multiplier * 10);
+        success_audio.play()
       } else {
         setMatched_index(matched_index + 1);
       }
+    }
+    else {
+      wrong_audio.play()
     }
   };
 
@@ -117,6 +161,10 @@ const GameSection = () => {
       <div></div>
       <div className="game-middle">
         <div className="game-left">
+        <div className="level-section">
+            <div className="tab-heading">Player Name</div>
+            <div className="ldevel tabd">{name}</div>
+          </div>
           <div className="level-section">
             <div className="tab-heading">Level</div>
             <div className="level tab">{level}</div>
@@ -133,9 +181,22 @@ const GameSection = () => {
         <div className="word-section">
           {/* <Countdown /> */}
           <div className="timer">
-            <div className="title"></div>
-            <div className="time">{seconds} secs</div>
+            <CircularProgress
+              variant="determinate"
+              value={(seconds * 100) / wordTimer}
+            />
+            {/* <div className="title"></div>
+            <div className="time">{seconds} secs</div> */}
           </div>
+          <GameOver
+              aspectRatio = {1}
+              show={modalShow}
+              level = {level}
+              score = {score}
+              name = {name}
+              onHide={() => setModalShow(false)}
+              
+            />
           <KeyboardEventHandler
             handleKeys={["alphanumeric"]}
             onKeyEvent={onKeyPress}

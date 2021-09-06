@@ -4,6 +4,8 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import CreateModelMixin
 import requests
 from .serializers import *
+from django.db.models import Avg
+
 from rest_framework.views import APIView
 import logging
 
@@ -36,6 +38,17 @@ class CreateStat(CreateModelMixin, GenericAPIView):
     def get(self, request):
         """User data fetch method"""
         stat_data = Stat.objects.all()
-        serializer = StatSerializer(stat_data, many = True)
-        data = serializer.data
+        top_10 = stat_data.order_by("-score")[0:10]
+        serializer = StatSerializer(top_10, many = True)
+        top_data = serializer.data
+        top_score = stat_data.order_by("-score").first().score
+        max_level = stat_data.order_by("-level").first().level
+        average_score = Stat.objects.aggregate(Avg("score"))
+
+        data = {"top_ten":top_data,
+                "top_score": top_score,
+                "max_level": max_level,
+                "number_of_games_played":stat_data.count(),
+                "average_score": average_score["score__avg"]
+                }
         return Response({"status": 200, "data": data})

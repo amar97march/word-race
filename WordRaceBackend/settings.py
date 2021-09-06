@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'leaderboard',
+    'words',
 ]
 
 MIDDLEWARE = [
@@ -148,8 +149,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
-    'https://localhost:3000',
+    'https://localhost:3000', 'https://word-race-game.herokuapp.com',
 ]
+
 
 django_heroku.settings(locals())
 options = DATABASES['default'].get('OPTIONS', {})

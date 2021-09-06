@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   height: 100vh;
-  /* background-color: #99d2fe; */
+  background-color: #a0d6ff;
 }
 
 
@@ -23,4 +23,36 @@
 
 .App .home-header img{
   height: 100px;
+}
+
+
+@media (max-width: 767px) {
+  .game-outer{
+    height: auto;
+    margin: 10px;
+  }
+  .game-outer .game-middle{
+    height: auto;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 400px) {
+  .App .home-header img{
+    height: 80px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {
 }

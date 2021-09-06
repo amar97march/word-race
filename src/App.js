@@ -4,6 +4,7 @@ import game_logo from './Assets/logo.png'
 import { BrowserRouter as Router,Switch, Route } from 'react-router-dom';
 import InstructionPage from './Components/InstructionSection/InstructionPage';
 import GameSection from './Components/GamePage/GameSection';
+import Leaderboard from './Components/LeaderBoard/LeaderboardPage.jsx';
 
 
 axios.defaults.xsrfCookieName = 'csrftoken'
@@ -19,6 +20,7 @@ function App() {
       <Switch>
       <Route path="/" exact component={InstructionPage}/>
       <Route path="/game" exact component={GameSection}/>
+      <Route path="/leaderboard" exact component={Leaderboard}/>
       </Switch>
 
 

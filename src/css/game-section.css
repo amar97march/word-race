@@ -1,240 +1,188 @@
-@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap");
 
-.App{
-    background-color: #70818e;
-}
-
-.game-outer{
-    background-color: #ece5da;
-    margin: 100px;
-    box-shadow: 0 0 25px rgb(0 0 0 / 10%);
-    border-radius: 8px;
+.game-outer {
+  background-color: white;
+  margin: 100px;
+  box-shadow: 0 0 25px rgb(0 0 0 / 10%);
+  border-radius: 8px;
 }
 
 .game-outer .game-left .level-section {
   /* float: left; */
   /* width: 31%; */
-  
 }
 
-.game-outer .tab{
-    height: 50px;
-    border-radius: 40px;
-    width: 100px;
-    /* margin:auto; */
-    margin:20%;
-    line-height: 50px;
-    color: white;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+.game-outer .tab {
+  height: 50px;
+  border-radius: 40px;
+  width: 100px;
+  /* margin:auto; */
+  margin: 20%;
+  line-height: 50px;
+  color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .game-outer .game-left {
-    /* display: flex; */
-    width: 10%;
-    padding: 30px;
+  /* display: flex; */
+  width: 10%;
+  padding: 30px;
 }
 .game-outer .game-left .tab-heading {
-    color: white;
+  color: rgb(75, 75, 75);
+  font-size: 18px;
 }
 
-.game-outer .game-left .level-section .level{
-    background: #7a56b2;
+.game-outer .game-left .level-section .level {
+  background: #7a56b2;
 }
 
 .game-outer .game-left .score-section {
   /* float: left; */
   /* width: 31%; */
-  margin:1%
+  margin: 1%;
 }
 
-.game-outer .game-left .score-section .score{
-    background-color: #68c38a;
-  }
+.game-outer .game-left .score-section .score {
+  background-color: #68c38a;
+}
 
 .game-outer .game-left .multiplier-section {
   /* float: right; */
   /* width: 31%; */
-  margin:1%
+  margin: 1%;
 }
 
-.game-outer .game-left .multiplier-section .multiplier{
-    background-color: #57bbef;
-  }
-  
+.game-outer .game-left .multiplier-section .multiplier {
+  background-color: #57bbef;
+}
 
-  .game-outer .game-middle {
-      display: flex;
-      height: 60vh;
-      /* background-color: lawngreen; */
-  }
+.game-outer .game-middle {
+  display: flex;
+  height: 60vh;
+  /* background-color: lawngreen; */
+}
 .game-outer .game-middle .word-section {
-    /* background-color: lavenderblush; */
-    float: left;
-    width: 80%;
-    display: flex;
+  /* background-color: lavenderblush; */
+  float: left;
+  width: 80%;
+  display: flex;
   flex-direction: column;
+}
+
+.game-outer .game-middle .word-section .timer {
+  margin: 10px;
 }
 
 .game-outer .game-middle .bar-section {
-    /* background-color: rgb(77, 30, 45); */
-    width: 10%;
+  /* background-color: rgb(77, 30, 45); */
+  width: 10%;
 }
 .progress-bar {
-    margin-top:20px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right:auto;
-    position: relative;
-    height: 80%;
-    width: 20px;
-    border-radius: 50px;
-    border: 1px solid rgb(182, 182, 182);
-    display: flex;
+  background-color: transparent !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  height: 80%;
+  width: 20px;
+  border-radius: 50px;
+  border: 1px solid rgb(182, 182, 182);
+  display: flex;
   flex-direction: column;
-  }
-  
-  .filler {
-      margin-top: auto;
-    background: #da1a1a;
-    height: 100%;
-    border-radius: inherit;
-    transition: width .2s ease-in;
-  }
+}
 
-  .game-outer .game-middle .word-section .words {
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-    /* display: flex; */
-  }
+.filler {
+  margin-top: auto;
+  background: #da1a1a;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.2s ease-in;
+}
 
-  .game-outer .game-middle .word-section .word-list {
-      /* float: left; */
-      margin-top: auto;
-      /* margin-bottom: 40px; */
-  }
+.game-outer .game-middle .word-section .words {
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  /* display: flex; */
+}
 
-  .game-outer .game-middle .word-section .word-list .word{
-    /* float: left; */
-    font-size: 20px;
-    color:rgb(116, 116, 116);
-    margin: 10px;
-    
-  }
+.game-outer .game-middle .word-section .word-list {
+  /* float: left; */
+  margin-top: auto;
+  /* margin-bottom: 40px; */
+}
 
-  .game-outer .game-middle .word-section .current-word{
-    line-height: auto;
-    text-shadow: black;
-    color: #f1ebe5;
-  text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff;
+.game-outer .game-middle .word-section .word-list .word {
+  /* float: left; */
+  font-size: 20px;
+  color: rgb(116, 116, 116);
+  margin: 10px;
+}
+
+.game-outer .game-middle .word-section .current-word {
+  line-height: auto;
+  text-shadow: black;
+  color: #f1ebe5;
+  text-shadow: 0 13.36px 8.896px #c4b59d, 0 -2px 1px #fff;
   letter-spacing: -4px;
-  }
+}
 
-  .game-outer .game-middle .word-section .current-word h3 {
-    /* margin: 20px; */
-    font-family: "Paytone One";
-    color: #202020;
-    text-transform: uppercase;
-    letter-spacing: -2px;
-  }
-  
-  .game-outer .game-middle .word-section .current-word h3 span {
-    display: block;
-    float: left;
-    margin: 11px 0 17px 0;
-    font-size: 80px;
-    line-height: 80px;
-    color: #f5f5f5;
-    text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff;
-    letter-spacing: -4px;
-  }
+.game-outer .game-middle .word-section .current-word h3 {
+  /* margin: 20px; */
+  font-family: "Paytone One";
+  color: #202020;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+}
 
+.game-outer .game-middle .word-section .current-word h3 span {
+  display: block;
+  float: left;
+  margin: 11px 0 17px 0;
+  font-size: 80px;
+  line-height: 80px;
+  color: rgb(224 235 255);
+  text-shadow: 0 13.36px 8.896px #c4b59d, 0 -2px 1px #fff;
+  letter-spacing: -4px;
+}
 
-  /* timer */
+@media (max-width: 767px) {
+  .game-outer{
+    height: auto;
+    margin: 10px;
+  }
+  .game-outer .game-middle{
+    height: auto;
+  }
+}
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 400px) {
+  .game-outer .tab{
+    height: 32px;
+    line-height: 32px;
+    width: 45px;
+  }
+  .game-outer .game-middle .word-section .current-word h3 span{
+    font-size: 30px;
+  }
+  .game-outer .game-left .tab-heading {
+    font-size: 14px;
+  }
+}
 
-.Timers {
-    display: flex;
-    justify-content: center;
-  }
-  @media (max-width: 900px) {
-    .Timers {
-      flex-direction: column;
-  
-      align-items: center;
-    }
-  }
-  @media (max-width: 900px) {
-    .Stopwatch {
-      margin-bottom: 40px;
-    }
-  }
-  .Countdown,
-  .Stopwatch {
-    margin-left: auto;
-    margin-right: auto;
-    /* border: 2px solid grey; */
-    border-radius: 4px;
-    padding: 20px;
-    width: 400px;
-    /* background-color: rgb(231, 231, 231);
-    box-shadow: 0 3px 6px rgb(12, 12, 12); */
-  }
-  .Countdown {
-    padding-top: 10px;
-  }
-  
-  .Countdown-header,
-  .Stopwatch-header {
-    font-size: 40px;
-    font-weight: bold;
-  }
-  
-  button {
-    background-color: #dbdbdb;
-    border: solid 1px transparent;
-    border-radius: 4px;
-    padding: 10px 20px;
-    color: #ffffff;
-    font-size: 16px;
-    margin: 0 5px;
-    cursor: pointer;
-  }
-  button:hover {
-    background-color: #106ba3;
-  }
-  .Stopwatch button {
-    padding: 12px 32px;
-    font-size: 20px;
-  }
-  .Stopwatch-display {
-    padding: 40px 0;
-    font-size: 48px;
-  }
-  .Stopwatch-text {
-  }
-  .Countdown-display {
-    margin-top: 5px;
-    margin-bottom: 20px;
-  }
-  .Countdown-display button {
-    margin: 0 15px;
-    border: solid 1px transparent;
-    border-radius: 2px;
-    padding: 4px 16px;
-    color: #ffffff;
-  
-    font-size: 16px;
-  }
-  .Countdown-display button:hover {
-    background-color: #106ba3;
-  }
-  .Countdown-label {
-    font-size: 18px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-  }
-  .Countdown-time {
-    font-size: 36px;
-    margin: 5px 0;
-  }
+@media only screen and (max-width: 600px) {
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {
+}

@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Rampart+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.leaderboard-outer {
+  background-color: #4575b6;
+  height: 100%;
+  text-align: center;
+  padding: 7px;
+}
+
+.leaderboard-outer .leaderboard-inner {
+  background-color: #ffffff;
+  width: 65%;
+  height: 90%;
+  text-align: center;
+  padding: 2px;
+  margin: 10px auto;
+  border-radius: 47px;
+  box-shadow: 0 0 18px rgb(0 0 0 / 64%);
+}
+
+.leaderboard-outer .leaderboard-inner .player-data .top-table {
+  margin: 10px;
+}
+
+.leaderboard-outer .leaderboard-inner .player-data .leaderboard-stats {
+  margin: 20px;
+  color: cadetblue;
+}
+.leaderboard-outer
+  .leaderboard-inner
+  .player-data
+  .leaderboard-stats
+  .stat-heading {
+  font-family: "Press Start 2P", cursive;
+}
+
+.leaderboard-outer .leaderboard-inner .leaderboards {
+  overflow-y: scroll;
+  height: 80%;
+  box-shadow: inset 0px 11px 8px -10px #525252,
+    inset 0px -11px 8px -10px #525252;
+  background: #36405d;
+}
+
+.leaderboard-outer .leaderboard-inner .leaderboards .scroll-section {
+  color: #dedede;
+}
+
+.leaderboard-outer .heading {
+  font-size: 40px;
+  /* color: white; */
+  font-family: "Rampart One", cursive;
+}
+
+.leaderboard-outer .leaderboard-inner .startButton {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.leaderboard-outer .leaderboard-inner .startButton img {
+  margin: 10px;
+  width: 100px;
+}
+
+@media (max-width: 767px) {
+    .leaderboard-outer {
+        height: auto;
+    }
+    .leaderboard-outer .leaderboard-inner{
+        width: 95%;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 400px) {
+  
+}
+
+@media only screen and (max-width: 600px) {
+  
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {
+}

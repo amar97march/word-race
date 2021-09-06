@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/instruction.css"
 import { Link } from "react-router-dom";
 import start_btn from '../../Assets/start.png'
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 
 const InstructionPage = () => {
+  let history = useHistory();
+  
+  const defaultValues = {
+    name: "Player-"+Math.floor(1000 + Math.random() * 90000)
+  };
+
+  const [formValues, setFormValues] = useState(defaultValues);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    history.push("/game/", { name: formValues["name"] })
+  }
 
   return (
     <div className = "instruction-outer">
@@ -53,9 +76,25 @@ const InstructionPage = () => {
 
   </div>
   </div>
-  <Link to="/game">
-  <button  className = "startButton"><img  src={start_btn} alt="side bar"/></button>
-  </Link>
+  <form onSubmit={handleSubmit}>
+            <Grid
+              container
+              alignItems="center"
+              justify="center"
+              direction="column"
+            >
+              <Grid item>
+                <TextField
+                  id="name-input"
+                  name="name"
+                  type="text"
+                  value={formValues.name}
+                  onChange={handleInputChange}
+                />
+              </Grid>
+              <Button  className = "startButton" type="submit" ><img  src={start_btn} alt="side bar"/></Button>
+            </Grid>
+          </form>
 </div>
     </div>
   );
