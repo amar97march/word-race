@@ -25,7 +25,7 @@
 
 .game-outer .game-left {
   /* display: flex; */
-  width: 10%;
+  width: 15%;
   padding: 30px;
 }
 .game-outer .game-left .tab-heading {
@@ -65,7 +65,7 @@
 .game-outer .game-middle .word-section {
   /* background-color: lavenderblush; */
   float: left;
-  width: 80%;
+  width: 70%;
   display: flex;
   flex-direction: column;
 }
@@ -76,7 +76,7 @@
 
 .game-outer .game-middle .bar-section {
   /* background-color: rgb(77, 30, 45); */
-  width: 10%;
+  width: 15%;
 }
 .progress-bar {
   background-color: transparent !important;

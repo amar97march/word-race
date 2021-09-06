@@ -48,8 +48,8 @@ export function GameOver(props) {
         </div>
         <div> To submit your score to the leaderboard press submit</div>
         <div>
-          <Button style={{ float: "right" }} onClick = {handleSubmit}>Submit score</Button>
-          <Button style={{ float: "right" }} onClick = {handleReplay} >Replay</Button>
+          <Button style={{ float: "right",color: "ButtonHighlight", backgroundColor: "#0d6efd", borderColor: "#0d6efd" }} onClick = {handleSubmit}>Submit score</Button>
+          <Button style={{ float: "right",color: "ButtonHighlight", backgroundColor: "#0d6efd", borderColor: "#0d6efd" }} onClick = {handleReplay} >Replay</Button>
           <br style={{ clear: "both" }} />
         </div>
       </Modal.Body>

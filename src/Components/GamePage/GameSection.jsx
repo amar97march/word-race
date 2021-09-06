@@ -172,7 +172,7 @@ const GameSection = (props) => {
       <div className="game-middle">
         <div className="game-left">
           <div className="level-section">
-            <div className="tab-heading">Player Name</div>
+            <div className="tab-heading">Player</div>
             <div className="ldevel tabd">{name}</div>
           </div>
           <div className="level-section">
