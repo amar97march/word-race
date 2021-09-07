@@ -42,11 +42,12 @@ export function GameOver(props) {
         <div className="greeting">
           Well done. You played excellent {props.name}
         </div>
-        <div>
+        <div className = "model-stats">
             <span style = {{fontWeight:800}}>Score:</span> {props.score}
             <br/>
             <span style = {{fontWeight:800}}>Level:</span> {props.level}
         </div>
+        <hr/>
         <div> To submit your score to the leaderboard press submit</div>
         <div>
           <button style={{ float: "right",color: "brown", background: "none", borderColor: "none", border: "none" }} onClick = {handleSubmit}>Submit score</button>

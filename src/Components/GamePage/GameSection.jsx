@@ -231,7 +231,7 @@ const GameSection = (props) => {
                       color:
                         index <= matched_index - 1
                           ? "rgb(80 175 105)"
-                          : "rgb(224 235 255)",
+                          : "rgb(142 178 243)",
                     }}
                   >
                     {item}

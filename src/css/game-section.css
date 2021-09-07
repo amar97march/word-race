@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
 
 .game-outer {
   background-color: white;
@@ -16,8 +17,9 @@
   height: 50px;
   border-radius: 40px;
   width: 100px;
+  text-align: center;
   /* margin:auto; */
-  margin: 20%;
+  /* margin: 20%; */
   line-height: 50px;
   color: white;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -27,6 +29,7 @@
   /* display: flex; */
   width: 15%;
   padding: 30px;
+  text-align: left;
 }
 .game-outer .game-left .tab-heading {
   color: rgb(75, 75, 75);
@@ -146,6 +149,21 @@
   color: rgb(224 235 255);
   text-shadow: 0 13.36px 8.896px #c4b59d, 0 -2px 1px #fff;
   /* letter-spacing: -4px; */
+}
+
+.model-content{
+  background-color: #8589ff;
+  color: white;
+}
+
+.modal-title {
+  font-family: 'ZCOOL KuaiLe', cursive;
+  margin-left: auto;
+  margin-right: auto;
+}
+.model-stats{
+  font-family: 'ZCOOL KuaiLe', cursive;
+
 }
 
 @media (max-width: 767px) {
