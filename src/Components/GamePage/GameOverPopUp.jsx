@@ -43,13 +43,14 @@ export function GameOver(props) {
           Well done. You played excellent {props.name}
         </div>
         <div>
-            Score: {props.score}
-            Level: {props.level}
+            <span style = {{fontWeight:800}}>Score:</span> {props.score}
+            <br/>
+            <span style = {{fontWeight:800}}>Level:</span> {props.level}
         </div>
         <div> To submit your score to the leaderboard press submit</div>
         <div>
-          <Button style={{ float: "right",color: "ButtonHighlight", backgroundColor: "#0d6efd", borderColor: "#0d6efd" }} onClick = {handleSubmit}>Submit score</Button>
-          <Button style={{ float: "right",color: "ButtonHighlight", backgroundColor: "#0d6efd", borderColor: "#0d6efd" }} onClick = {handleReplay} >Replay</Button>
+          <button style={{ float: "right",color: "brown", background: "none", borderColor: "none", border: "none" }} onClick = {handleSubmit}>Submit score</button>
+          <button style={{ float: "right",color: "brown", background: "none", borderColor: "none", border: "none" }} onClick = {handleReplay} >Replay</button>
           <br style={{ clear: "both" }} />
         </div>
       </Modal.Body>

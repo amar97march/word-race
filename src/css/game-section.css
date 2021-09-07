@@ -126,7 +126,7 @@
   text-shadow: black;
   color: #f1ebe5;
   text-shadow: 0 13.36px 8.896px #c4b59d, 0 -2px 1px #fff;
-  letter-spacing: -4px;
+  /* letter-spacing: -4px; */
 }
 
 .game-outer .game-middle .word-section .current-word h3 {
@@ -142,10 +142,10 @@
   float: left;
   margin: 11px 0 17px 0;
   font-size: 80px;
-  line-height: 80px;
+  /* line-height: 80px; */
   color: rgb(224 235 255);
   text-shadow: 0 13.36px 8.896px #c4b59d, 0 -2px 1px #fff;
-  letter-spacing: -4px;
+  /* letter-spacing: -4px; */
 }
 
 @media (max-width: 767px) {

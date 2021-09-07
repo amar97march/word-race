@@ -26,13 +26,14 @@ const GameSection = (props) => {
   const [seconds, setSeconds] = React.useState(5);
   const [bonusWord, setBonusWord] = React.useState("");
   const [modalShow, setModalShow] = useState(false);
+  const [keyPressed, setKeyPressed] = useState("");
   let success_audio = new Audio(success_sound);
   let wrong_audio = new Audio(wrong);
   const notify = () => toast("Wow.. Level Up");
   const bonus_point = () => toast("Yeaah, Bonus Point");
 
   var timer;
-  const wordSize = 20;
+  const wordSize = 5;
 
   const addWord = () => {
     if (wordListQueue.length === 0 && wordList.length === 0) {
@@ -62,12 +63,10 @@ const GameSection = (props) => {
         //   wordListQueue[wordListQueue.length - 1],
         //   ...prevItems,
         // ]);
-        console.log("uuuuu");
 
         setCurrentWord(wordListQueue[wordListQueue.length - 1].split(""));
         setWordListQueue(wordListQueue.slice(0, -1));
       } else if (wordListQueue.length > 0) {
-        console.log("uuuuuuukkkk");
         setWordList((prevItems) => [
           wordListQueue[wordListQueue.length - 1],
           ...prevItems,
@@ -79,14 +78,12 @@ const GameSection = (props) => {
       setSeconds(wordTimer);
 
       if (percentage + 10 >= 100) {
-        // <GameOver show={true}/>
         setModalShow(true);
         setSeconds(0);
       } else {
         setPercentage(percentage + 10);
       }
     }
-    console.log(wordListQueue, "--", wordList);
   };
 
   const decreaseSeconds = (seconds) => {
@@ -127,6 +124,7 @@ const GameSection = (props) => {
   };
 
   const onKeyPress = (key, e) => {
+    setKeyPressed(key)
     if (
       matched_index < currentWord.length &&
       currentWord[matched_index].toLowerCase() === key
@@ -187,6 +185,10 @@ const GameSection = (props) => {
             <div className="tab-heading">Multiplier</div>
             <div className="multiplier tab">{multiplier}X</div>
           </div>
+          <div className="multiplier-section">
+            <div className="tab-heading">Key Pressed</div>
+            <div className="multiplier tab">{keyPressed.toUpperCase()}</div>
+          </div>
         </div>
         <div className="word-section">
           {/* <Countdown /> */}
@@ -215,9 +217,9 @@ const GameSection = (props) => {
               {wordList.map((item, index) => (
                 <div
                   className="word"
-                  style={{ fontSize: wordSize - index * 2 + "px" }}
+                  style={{ fontSize: wordSize + index  + "px" }}
                 >
-                  {item}
+                  {item.toUpperCase()}
                 </div>
               ))}
             </div>
@@ -229,7 +231,7 @@ const GameSection = (props) => {
                       color:
                         index <= matched_index - 1
                           ? "rgb(80 175 105)"
-                          : "#f5f5f5",
+                          : "rgb(224 235 255)",
                     }}
                   >
                     {item}
@@ -241,7 +243,7 @@ const GameSection = (props) => {
         </div>
         <div className="bar-section">
           <ProgressBar percentage={percentage} />
-          Word Queue
+          Queue
         </div>
       </div>
     </div>
