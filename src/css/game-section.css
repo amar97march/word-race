@@ -1,16 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap");
 
 .game-outer {
   background-color: white;
   margin: 100px;
   box-shadow: 0 0 25px rgb(0 0 0 / 10%);
   border-radius: 8px;
-}
-
-.game-outer .game-left .level-section {
-  /* float: left; */
-  /* width: 31%; */
 }
 
 .game-outer .tab {
@@ -151,39 +146,38 @@
   /* letter-spacing: -4px; */
 }
 
-.model-content{
+.model-content {
   background-color: #8589ff;
   color: white;
 }
 
 .modal-title {
-  font-family: 'ZCOOL KuaiLe', cursive;
+  font-family: "ZCOOL KuaiLe", cursive;
   margin-left: auto;
   margin-right: auto;
 }
-.model-stats{
-  font-family: 'ZCOOL KuaiLe', cursive;
-
+.model-stats {
+  font-family: "ZCOOL KuaiLe", cursive;
 }
 
 @media (max-width: 767px) {
-  .game-outer{
+  .game-outer {
     height: auto;
     margin: 10px;
   }
-  .game-outer .game-middle{
+  .game-outer .game-middle {
     height: auto;
   }
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 400px) {
-  .game-outer .tab{
+  .game-outer .tab {
     height: 32px;
     line-height: 32px;
     width: 45px;
   }
-  .game-outer .game-middle .word-section .current-word h3 span{
+  .game-outer .game-middle .word-section .current-word h3 span {
     font-size: 30px;
   }
   .game-outer .game-left .tab-heading {

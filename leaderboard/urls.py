@@ -1,4 +1,4 @@
-"""Urls for books APIs"""
+"""Urls for Leaderboard APIs"""
 from django.urls import path
 
 from .views import *

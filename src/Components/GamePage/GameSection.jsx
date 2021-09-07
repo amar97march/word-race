@@ -4,7 +4,6 @@ import ProgressBar from "./Progressbar";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import GameOver from "./GameOverPopUp";
-import Countdown from "./Countdown";
 import "../../css/game-section.css";
 import success_sound from "../../Assets/success.wav";
 import wrong from "../../Assets/wrong.mp3";
@@ -37,7 +36,6 @@ const GameSection = (props) => {
 
   const addWord = () => {
     if (wordListQueue.length === 0 && wordList.length === 0) {
-      // setModalShow(true)
       notify();
       setLevel(level + 1);
       setMultiplier(multiplier + 1);
@@ -59,11 +57,6 @@ const GameSection = (props) => {
       }
     } else {
       if (wordListQueue.length > 0 && currentWord.length === 0) {
-        // setWordList((prevItems) => [
-        //   wordListQueue[wordListQueue.length - 1],
-        //   ...prevItems,
-        // ]);
-
         setCurrentWord(wordListQueue[wordListQueue.length - 1].split(""));
         setWordListQueue(wordListQueue.slice(0, -1));
       } else if (wordListQueue.length > 0) {
@@ -124,7 +117,7 @@ const GameSection = (props) => {
   };
 
   const onKeyPress = (key, e) => {
-    setKeyPressed(key)
+    setKeyPressed(key);
     if (
       matched_index < currentWord.length &&
       currentWord[matched_index].toLowerCase() === key
@@ -191,14 +184,11 @@ const GameSection = (props) => {
           </div>
         </div>
         <div className="word-section">
-          {/* <Countdown /> */}
           <div className="timer">
             <CircularProgress
               variant="determinate"
               value={(seconds * 100) / wordTimer}
             />
-            {/* <div className="title"></div>
-            <div className="time">{seconds} secs</div> */}
           </div>
           <GameOver
             aspectRatio={1}
@@ -217,7 +207,7 @@ const GameSection = (props) => {
               {wordList.map((item, index) => (
                 <div
                   className="word"
-                  style={{ fontSize: wordSize + index  + "px" }}
+                  style={{ fontSize: wordSize + index + "px" }}
                 >
                   {item.toUpperCase()}
                 </div>

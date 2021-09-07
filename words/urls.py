@@ -1,6 +1,5 @@
-"""Urls for books APIs"""
+"""Urls for Words APIs"""
 from django.urls import path
-
 from .views import *
 
 

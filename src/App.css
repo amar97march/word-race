@@ -4,7 +4,6 @@
   background-color: #a0d6ff;
 }
 
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -14,31 +13,27 @@
   }
 }
 
-
-
-.App .home-header{
+.App .home-header {
   background-color: #4575b6;
 }
 
-
-.App .home-header img{
+.App .home-header img {
   height: 100px;
 }
 
-
 @media (max-width: 767px) {
-  .game-outer{
+  .game-outer {
     height: auto;
     margin: 10px;
   }
-  .game-outer .game-middle{
+  .game-outer .game-middle {
     height: auto;
   }
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 400px) {
-  .App .home-header img{
+  .App .home-header img {
     height: 80px;
   }
 }
