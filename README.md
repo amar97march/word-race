@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Word Race
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This game is to test your typing speed
 
-## Available Scripts
+# Url
+To play the game press [here](https://word-race-game.herokuapp.com/)
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+To run the game in your local, download the repo and create a virtual env
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+sudo pip3 install virtualenv
+```
 
-### `npm test`
+```bash
+cd word-race
+virtualenv venv
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Activate your virtual environment
+```bash
+source venv/bin/activate
+```
 
-### `npm run build`
+Install requirement files
+```bash 
+pip install -r requirements.txt
+```
+Change API url to local url in /src/services/API.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const baseUrl = "https://word-race-game.herokuapp.com"
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+to
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const baseUrl = "http://127.0.0.1:8000"
 
-### `npm run eject`
+Migrate database and runserver
+```bash
+python manage.py migrate
+python manage.py runserver
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Install node packages and run 
+```bash 
+npm install
+npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Game rules and assumptions
+This is a word typing game, in which each level will have 20 words. The level will increase once the timer for that level is over.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Player will have to type the words correctly in order to clear them from a queue which will keep on increasing by adding new words over a fixed interval of time. A meter is also there which has limited capacity and will keep on increasing as the number of words in the queue increase and can be decreased on correctly typing the words. Once the meter if full any further addition of words will lead to game over. There is also a bonus word in each level on clearing of which will give you extra points.
+On correct entering of a word player earns some score which will be base on the level (and multiplier) they are on.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+After the game is over the player can replay or submit their score to the leader board where they can check top ten player and other game stats.
 
-## Learn More
+# Game Version
+Version 1.0
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
