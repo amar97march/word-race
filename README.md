@@ -7,7 +7,7 @@ To play the game press [here](https://word-race-game.herokuapp.com/)
 
 ## Installation
 
-To run the game in your local download the repo and create a virtual env
+To run the game in your local, download the repo and create a virtual env
 
 
 ```bash
@@ -15,6 +15,7 @@ sudo pip3 install virtualenv
 ```
 
 ```bash
+cd word-race
 virtualenv venv
 ```
 
