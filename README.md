@@ -1,6 +1,6 @@
 # Word Race
 
-This is game to test your typing speed
+This game is to test your typing speed
 
 # Url
 To play the game press [here](https://word-race-game.herokuapp.com/)
