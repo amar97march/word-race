@@ -22,7 +22,7 @@
 .leaderboard-outer .leaderboard-inner .top-table {
   margin: 10px;
   overflow: scroll;
-  height: 300px;
+  /* height: 300px; */
 
 }
 
@@ -30,7 +30,7 @@
     margin: 20px;
 }
 .leaderboard-outer .leaderboard-inner .player-data .data{
-    margin: auto 5px;
+    margin: auto 30px;
 }
 
 .leaderboard-outer .leaderboard-inner .leaderboard-stats {

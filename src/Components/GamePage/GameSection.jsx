@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import KeyboardEventHandler from "react-keyboard-event-handler";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProgressBar from "./Progressbar";
-import success_sound from "../../Assets/success.wav";
-import wrong from "../../Assets/wrong.mp3";
+import CircularProgressWithLabel from "./CircularProgress";
+import success_sound from "../../assets/success.wav";
+import wrong from "../../assets/wrong.mp3";
 import GameOver from "./GameOverPopUp";
 import { getWordsdata } from "../../services/API";
 import "../../css/game-section.css";
@@ -45,7 +45,9 @@ const GameSection = (props) => {
       notify();
       setLevel(level + 1);
       setMultiplier(multiplier + 1);
+      if (level < 6){
       setWordTimer(wordTimer - 1);
+      }
       setSeconds(0);
 
       fetchItems();
@@ -189,9 +191,11 @@ const GameSection = (props) => {
         </div>
         <div className="word-section">
           <div className="timer">
-            <CircularProgress
-              variant="determinate"
-              value={(seconds * 100) / wordTimer}
+            <CircularProgressWithLabel
+              // variant="determinate"
+              seconds = {seconds}
+              wordTimer = {wordTimer}
+              
             />
           </div>
           <GameOver

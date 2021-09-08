@@ -1,6 +1,6 @@
 import './App.css';
 import axios from 'axios';
-import game_logo from './Assets/logo.png'
+import game_logo from './assets/logo.png'
 import { BrowserRouter as Router,Switch, Route } from 'react-router-dom';
 import InstructionPage from './Components/InstructionSection/InstructionPage';
 import GameSection from './Components/GamePage/GameSection';
