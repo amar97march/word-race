@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-
-import ProgressBar from "./Progressbar";
+import { useHistory } from "react-router-dom";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import GameOver from "./GameOverPopUp";
-import "../../css/game-section.css";
-import success_sound from "../../Assets/success.wav";
-import wrong from "../../Assets/wrong.mp3";
-import { getWordsdata } from "../../services/API";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProgressBar from "./Progressbar";
+import success_sound from "../../Assets/success.wav";
+import wrong from "../../Assets/wrong.mp3";
+import GameOver from "./GameOverPopUp";
+import { getWordsdata } from "../../services/API";
+import "../../css/game-section.css";
+import { WORDSIZE } from "../../services/Constants";
 
 const GameSection = (props) => {
-  const name = props.location.state.name;
   const [score, setScore] = useState(0);
   const [level, setLevel] = useState(1);
   const [multiplier, setMultiplier] = useState(1);
@@ -30,9 +30,15 @@ const GameSection = (props) => {
   let wrong_audio = new Audio(wrong);
   const notify = () => toast("Wow.. Level Up");
   const bonus_point = () => toast("Yeaah, Bonus Point");
+  var TIMER;
+  let history = useHistory();
 
-  var timer;
-  const wordSize = 5;
+  var NAME;
+  if (props.location.state !== undefined) {
+    NAME = props.location.state.name;
+  } else {
+    history.push("/");
+  }
 
   const addWord = () => {
     if (wordListQueue.length === 0 && wordList.length === 0) {
@@ -83,33 +89,14 @@ const GameSection = (props) => {
     setSeconds(seconds - 1);
   };
 
-  useEffect(() => {
-    if (seconds > 0) {
-      timer = setTimeout(() => decreaseSeconds(seconds), 1000);
-      return () => {
-        clearTimeout(timer);
-      };
-    } else {
-      addWord();
-
-      if (wordList.length === 8) {
-        setPercentage(100);
-      } else {
-        setPercentage(wordList.length * 10);
-      }
-    }
-  }, [seconds]);
-
   const fetchItems = () => {
     getWordsdata()
       .then((res) => {
         let wordList_data = res.data.data["words_list"];
 
-        console.log(res.data.data);
         if (wordList_data.length > 0) {
           setCurrentWord(wordList_data[wordList_data.length - 1].split(""));
           setBonusWord(res.data.data["bonus_word"]);
-          console.log(wordList_data[wordList_data.length - 1].split(""));
           setWordListQueue(wordList_data.slice(0, -1));
         }
       })
@@ -154,6 +141,23 @@ const GameSection = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (seconds > 0) {
+      TIMER = setTimeout(() => decreaseSeconds(seconds), 1000);
+      return () => {
+        clearTimeout(TIMER);
+      };
+    } else {
+      addWord();
+
+      if (wordList.length === 8) {
+        setPercentage(100);
+      } else {
+        setPercentage(wordList.length * 10);
+      }
+    }
+  }, [seconds]);
+
   useEffect(fetchItems, []);
 
   return (
@@ -164,7 +168,7 @@ const GameSection = (props) => {
         <div className="game-left">
           <div className="level-section">
             <div className="tab-heading">Player</div>
-            <div className="ldevel tabd">{name}</div>
+            <div className="ldevel tabd">{NAME}</div>
           </div>
           <div className="level-section">
             <div className="tab-heading">Level</div>
@@ -195,7 +199,7 @@ const GameSection = (props) => {
             show={modalShow}
             level={level}
             score={score}
-            name={name}
+            name={NAME}
             onHide={() => setModalShow(false)}
           />
           <KeyboardEventHandler
@@ -207,7 +211,7 @@ const GameSection = (props) => {
               {wordList.map((item, index) => (
                 <div
                   className="word"
-                  style={{ fontSize: wordSize + index + "px" }}
+                  style={{ fontSize: WORDSIZE + "px" }}
                 >
                   {item.toUpperCase()}
                 </div>
@@ -233,7 +237,7 @@ const GameSection = (props) => {
         </div>
         <div className="bar-section">
           <ProgressBar percentage={percentage} />
-          Queue
+          Meter
         </div>
       </div>
     </div>

@@ -18,9 +18,9 @@ function App() {
       <img  src={game_logo} alt="side bar"/>
       </div>
       <Switch>
-      <Route path="/" exact component={InstructionPage}/>
       <Route path="/game" exact component={GameSection}/>
       <Route path="/leaderboard" exact component={Leaderboard}/>
+      <Route path="/" exact component={InstructionPage}/>
       </Switch>
 
 

@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import "../../css/instruction.css";
-import { Link } from "react-router-dom";
-import start_btn from "../../Assets/start.png";
+import { useHistory } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { useHistory } from "react-router-dom";
+import start_btn from "../../Assets/start.png";
+import "../../css/instruction.css";
+
 
 const InstructionPage = () => {
-  let history = useHistory();
 
   const defaultValues = {
     name: "Player-" + Math.floor(1000 + Math.random() * 90000),
   };
-
   const [formValues, setFormValues] = useState(defaultValues);
+  let history = useHistory();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,7 +35,7 @@ const InstructionPage = () => {
           <div className="scroll-section">
             <h1>Word race is a game to test your typing speed.</h1>
             <p>
-              Do know think you can typing faster than rest of people out there?
+              Do know think you can type faster than rest of people out there?
             </p>
             <h2>
               Here you can not only test your typing skills but can enhance them

@@ -19,17 +19,27 @@
   box-shadow: 0 0 18px rgb(0 0 0 / 64%);
 }
 
-.leaderboard-outer .leaderboard-inner .player-data .top-table {
+.leaderboard-outer .leaderboard-inner .top-table {
   margin: 10px;
+  overflow: scroll;
+  height: 300px;
+
 }
 
-.leaderboard-outer .leaderboard-inner .player-data .leaderboard-stats {
+.leaderboard-outer .leaderboard-inner .player-data{
+    margin: 20px;
+}
+.leaderboard-outer .leaderboard-inner .player-data .data{
+    margin: auto 5px;
+}
+
+.leaderboard-outer .leaderboard-inner .leaderboard-stats {
   margin: 20px;
   color: cadetblue;
+  font-size: 11px;
 }
 .leaderboard-outer
   .leaderboard-inner
-  .player-data
   .leaderboard-stats
   .stat-heading {
   font-family: "Press Start 2P", cursive;
@@ -65,29 +75,33 @@
   width: 100px;
 }
 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+}
+
 @media (max-width: 767px) {
   .leaderboard-outer {
-    height: auto;
+    height: 90%;
   }
   .leaderboard-outer .leaderboard-inner {
     width: 95%;
   }
 }
 
+@media only screen and (max-width: 600px) {
+    .leaderboard-outer .leaderboard-inner .top-table {
+        overflow: scroll;
+        height: 250px;
+      
+      }
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 400px) {
-}
-
-@media only screen and (max-width: 600px) {
-}
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (max-width: 768px) {
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (max-width: 992px) {
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (max-width: 1200px) {
 }

@@ -170,8 +170,22 @@
   }
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 400px) {
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1200px) {
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+}
+
+
+@media only screen and (max-width: 600px) {
   .game-outer .tab {
     height: 32px;
     line-height: 32px;
@@ -185,16 +199,17 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
-}
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (max-width: 768px) {
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (max-width: 992px) {
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (max-width: 1200px) {
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 400px) {
+  .game-outer .tab {
+    height: 32px;
+    line-height: 32px;
+    width: 45px;
+  }
+  .game-outer .game-middle .word-section .current-word h3 span {
+    font-size: 25px;
+  }
+  .game-outer .game-left .tab-heading {
+    font-size: 14px;
+  }
 }

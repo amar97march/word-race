@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.css";
 import { useHistory } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
 import { addStat } from "../../services/API";
 
 export function GameOver(props) {
@@ -11,17 +11,15 @@ export function GameOver(props) {
     let data = { name: props.name, score: props.score, level: props.level };
     addStat(data)
       .then((res) => {
-        console.log(res);
+        history.push("/leaderboard/", {
+            name: props.name,
+            score: props.score,
+            level: props.level,
+          });
       })
       .catch((err) => {
-        console.log(err);
-        console.log("Details not saved. Contact Admin");
       });
-    history.push("/leaderboard/", {
-      name: props.name,
-      score: props.score,
-      level: props.level,
-    });
+    
   };
 
   const handleReplay = (event) => {
@@ -34,6 +32,8 @@ export function GameOver(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      backdrop="static"
+      keyboard={false}
     >
       <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">Game Over</Modal.Title>
