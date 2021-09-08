@@ -48,9 +48,9 @@ npm start
 ```
 
 # Game rules and assumptions
-This is a word typing game, in which each level will have 20 words. The level will increase on successfully typing all the words or if the timer for that level is over.
+This is a word typing game, in which each level will have 20 words. The level will increase once the timer for that level is over.
 
-Player will have to type the words correctly in order to clear them from a queue which will keep on increasing by adding new words over a fixed interval of time. A meter is also there which has limited capacity and will keep on increasing as the number of words in the queue increase and can be decreased on correctly typing the words. Once the meter if full any addition of further words will lead to game over. There is also a bonus words in each level on clearing of which will give you extra points.
+Player will have to type the words correctly in order to clear them from a queue which will keep on increasing by adding new words over a fixed interval of time. A meter is also there which has limited capacity and will keep on increasing as the number of words in the queue increase and can be decreased on correctly typing the words. Once the meter if full any further addition of words will lead to game over. There is also a bonus word in each level on clearing of which will give you extra points.
 On correct entering of a word player earns some score which will be base on the level (and multiplier) they are on.
 
 After the game is over the player can replay or submit their score to the leader board where they can check top ten player and other game stats.
