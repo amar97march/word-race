@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import { ToastContainer, toast } from "react-toastify";
+import { Shake } from "reshake";
 import "react-toastify/dist/ReactToastify.css";
 import ProgressBar from "./Progressbar";
 import CircularProgressWithLabel from "./CircularProgress";
@@ -25,6 +26,7 @@ const GameSection = (props) => {
   const [seconds, setSeconds] = React.useState(5);
   const [bonusWord, setBonusWord] = React.useState("");
   const [modalShow, setModalShow] = useState(false);
+  const [shake, setShake] = useState(false);
   const [keyPressed, setKeyPressed] = useState("");
   let success_audio = new Audio(success_sound);
   let wrong_audio = new Audio(wrong);
@@ -45,8 +47,8 @@ const GameSection = (props) => {
       notify();
       setLevel(level + 1);
       setMultiplier(multiplier + 1);
-      if (level < 6){
-      setWordTimer(wordTimer - 1);
+      if (level < 6) {
+        setWordTimer(wordTimer - 1);
       }
       setSeconds(0);
 
@@ -114,6 +116,7 @@ const GameSection = (props) => {
       if (matched_index + 1 === currentWord.length) {
         setMatched_index(0);
         if (currentWord.join("") === bonusWord) {
+          setScore(score + multiplier * level * 10);
           bonus_point();
         }
         if (wordList.length > 0) {
@@ -133,15 +136,27 @@ const GameSection = (props) => {
           setCurrentWord([]);
         }
 
-        setScore(score + multiplier * 10);
+        setMultiplier(multiplier + 1);
+        setScore(score + multiplier * level *10);
+        if (wordList.length === 0){
+        addWord();  
+        }
+
         success_audio.play();
       } else {
         setMatched_index(matched_index + 1);
       }
     } else {
+      if (multiplier > 1) {
+        setMultiplier(multiplier - 1);
+      }
+      setShake(true)
+      setTimeout(() => setShake(false), 500);
       wrong_audio.play();
     }
   };
+
+  
 
   useEffect(() => {
     if (seconds > 0) {
@@ -193,9 +208,8 @@ const GameSection = (props) => {
           <div className="timer">
             <CircularProgressWithLabel
               // variant="determinate"
-              seconds = {seconds}
-              wordTimer = {wordTimer}
-              
+              seconds={seconds}
+              wordTimer={wordTimer}
             />
           </div>
           <GameOver
@@ -213,30 +227,40 @@ const GameSection = (props) => {
           <div className="words">
             <div className="word-list">
               {wordList.map((item, index) => (
-                <div
-                  className="word"
-                  style={{ fontSize: WORDSIZE + "px" }}
-                >
+                <div className="word" style={{ fontSize: WORDSIZE + "px" }}>
                   {item.toUpperCase()}
                 </div>
               ))}
             </div>
-            <div className="current-word">
-              <h3>
-                {currentWord.map((item, index) => (
-                  <span
-                    style={{
-                      color:
-                        index <= matched_index - 1
-                          ? "rgb(80 175 105)"
-                          : "rgb(142 178 243)",
-                    }}
-                  >
-                    {item}
-                  </span>
-                ))}
-              </h3>
-            </div>
+            <Shake
+              active = {shake}
+              h={5}
+              v={5}
+              r={3}
+              dur={300}
+              int={10}
+              max={100}
+              fixed={true}
+              fixedStop={false}
+              freez={false}
+            >
+              <div className="current-word">
+                <h3>
+                  {currentWord.map((item, index) => (
+                    <span
+                      style={{
+                        color: shake ? "red": 
+                          index <= matched_index - 1
+                            ? "rgb(80 175 105)"
+                            : "rgb(142 178 243)",
+                      }}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </h3>
+              </div>
+            </Shake>
           </div>
         </div>
         <div className="bar-section">
